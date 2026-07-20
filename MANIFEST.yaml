@@ -1,0 +1,49 @@
+system: OperOS Method (OBOS)
+version: 0.2.0
+release_date: 2026-07-20
+principle: "Source once. Publish everywhere. No asset productized without an RoT-terms result metric."
+canonical_source: "This repository (GitHub). Confluence is interim canonical source for any object not yet migrated (status: stub)."
+jira_epic: OBOS-1
+confluence_home: https://operos.atlassian.net/wiki/spaces/TLAC
+
+objects:
+  - {id: SYS-000, title: Operating Architecture & Master Manifest, path: 00-governance/operating-architecture.md, status: migrated}
+  - {id: SYS-001, title: Manifesto & Category Narrative, path: 01-source-system/SYS-001-manifesto-category-narrative.md, status: stub, jira: OBOS-2}
+  - {id: SYS-002, title: Knowledge Foundation & Ontology, path: 01-source-system/SYS-002-knowledge-foundation-ontology.md, status: migrated, jira: OBOS-3}
+  - {id: FW-001, title: "Strategy & Competitive Advantage", path: 02-frameworks/FW-001-strategy-competitive-advantage/, status: partial, jira: OBOS-4}
+  - {id: FW-001.1, title: Strategy Cascade, path: 02-frameworks/FW-001-strategy-competitive-advantage/strategy-cascade.md, status: migrated}
+  - {id: FW-001.2, title: Competitive Advantage Stack, path: 02-frameworks/FW-001-strategy-competitive-advantage/competitive-advantage-stack.md, status: migrated}
+  - {id: FW-001.3, title: Strategic Inflection Radar, path: 02-frameworks/FW-001-strategy-competitive-advantage/strategic-inflection-radar.md, status: migrated}
+  - {id: FW-001.4, title: "MECE Issue Trees (McKinsey)", path: 02-frameworks/FW-001-strategy-competitive-advantage/mckinsey-mece-issue-trees.md, status: new}
+  - {id: FW-001.5, title: "Growth-Share & Experience Curve (BCG)", path: 02-frameworks/FW-001-strategy-competitive-advantage/bcg-growth-share-experience-curve.md, status: new}
+  - {id: FW-002, title: Leadership & High Output Management, path: 02-frameworks/FW-002-leadership-high-output-management.md, status: stub, jira: OBOS-5}
+  - {id: FW-003, title: "OKRs, Metrics & Operating Cadence", path: 02-frameworks/FW-003-okrs-metrics-operating-cadence.md, status: stub, jira: OBOS-6}
+  - {id: FW-004, title: Operations & Accountability, path: 02-frameworks/FW-004-operations-accountability.md, status: stub, jira: OBOS-7}
+  - {id: FW-005, title: "Revenue, Offers & Selling", path: 02-frameworks/FW-005-revenue-offers-selling.md, status: stub, jira: OBOS-8}
+  - {id: FW-006, title: Product & Customer Success, path: 02-frameworks/FW-006-product-customer-success.md, status: stub, jira: OBOS-9}
+  - {id: FW-007, title: Finance & Value Creation, path: 02-frameworks/FW-007-finance-value-creation.md, status: stub, jira: OBOS-10}
+  - {id: FW-008, title: AI Enterprise Architecture, path: 02-frameworks/FW-008-ai-enterprise-architecture.md, status: stub, jira: OBOS-11}
+  - {id: ASMT-001, title: Assessments & Diagnostics, path: 03-assessments/ASMT-001-assessments-diagnostics.md, status: stub, jira: OBOS-12}
+  - {id: PLAY-001, title: Implementation Playbooks, path: 04-playbooks/PLAY-001-implementation-playbooks.md, status: stub, jira: OBOS-13}
+  - {id: SALES-001, title: Sales Enablement, path: 05-sales-enablement/SALES-001-sales-enablement.md, status: partial, jira: OBOS-14}
+  - {id: GTM-001, title: Thought Leadership Engine, path: 06-thought-leadership/GTM-001-thought-leadership-engine.md, status: stub, jira: OBOS-15, note: "distribution owned by Rafael's GTM Engine"}
+  - {id: CERT-001, title: Certification & Partner Enablement, path: 07-certifications/CERT-001-certification-partner-enablement.md, status: stub, jira: OBOS-16}
+  - {id: PROOF-001, title: Case Studies & Proof, path: 08-case-studies/PROOF-001-case-studies-proof.md, status: stub, jira: OBOS-17, note: "365 Retail Markets status disputed between HubSpot and Rafael's draft - do not publish as proof yet"}
+  - {id: REL-001, title: Release Notes & Release Candidate Packaging, path: 09-releases/REL-001-release-notes.md, status: stub, jira: OBOS-18}
+  - {id: ARCH-001, title: "OperOS Content & Enterprise Brain Architecture", path: 10-architecture/ARCH-001-content-enterprise-brain-architecture.md, status: drafting, jira: OBOS-19}
+  - {id: CONCEPT-RoT, title: "RoT - Return on Tokens", path: core-concepts/RoT-return-on-tokens.md, status: canonical}
+  - {id: TPL-001, title: Framework Template, path: templates/framework_template.md, status: migrated}
+  - {id: TPL-002, title: Executive One-Pager Template, path: templates/executive_one_pager_template.md, status: migrated}
+  - {id: TPL-000, title: Frontmatter Schema, path: templates/frontmatter_schema.yaml, status: migrated}
+  - {id: AUT-001, title: Content Generation Prompts, path: automations/content_generation_prompts.md, status: migrated}
+  - {id: AUT-002, title: Publishing Pipeline, path: automations/publishing_pipeline.md, status: migrated}
+  - {id: AUT-003, title: Build-in-Public Log, path: automations/build-in-public-log.md, status: active}
+
+open_conflicts:
+  - "ICP revenue band: brief says $30-500M, Confluence ICP page says $100M-$1B."
+  - "ICP geography: Confluence says US-only, live HubSpot pipeline is majority Brazil-based."
+  - "365 Retail Markets deal status: HubSpot shows Closed Won, Rafael's GTM draft describes it as still open/in-progress."
+  - "Sprint 0 price: some Confluence pages still show $8,000/mo (stale); $15,390/mo is current per Sales Playbook and the actual HubSpot deal."
+
+blocked:
+  - "Databricks Enterprise Brain (ARCH-001 steps 4-8): no Databricks connector available in this environment."

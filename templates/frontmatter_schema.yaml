@@ -1,0 +1,27 @@
+object_schema:
+  required:
+    - id
+    - version
+    - status
+    - kind
+    - publish_to
+  status_values:
+    - idea
+    - draft
+    - review
+    - approved
+    - published
+    - deprecated
+    - archived
+  common_fields:
+    id: unique object identifier
+    version: semantic version
+    title: object title
+    status: lifecycle state
+    kind: concept | framework | template | prompt | diagram | scorecard | lesson | playbook
+    dependencies: upstream object IDs
+    outputs: downstream object IDs
+    publish_to: target channels
+    source_influences: non-verbatim inspiration sources
+    owner: accountable owner
+    last_updated: YYYY-MM-DD
