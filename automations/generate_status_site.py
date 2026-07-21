@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Regenerates docs/index.html from MANIFEST.yaml. Run by .github/workflows/status-site.yml on every push to main."""
-import yaml, html, pathlib, datetime
+"""Regenerates docs/index.html from MANIFEST.yaml + build-in-public-log.md. Run by .github/workflows/status-site.yml on every relevant push."""
+import yaml, html, pathlib, datetime, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 manifest = yaml.safe_load((ROOT / "MANIFEST.yaml").read_text())
@@ -8,22 +8,14 @@ manifest = yaml.safe_load((ROOT / "MANIFEST.yaml").read_text())
 REPO_BLOB = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/"
 REPO_TREE = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/tree/main/"
 DRIVE_URL = "https://drive.google.com/drive/folders/0AG6QZiEVwppOUk9PVA"
+LOG_URL = REPO_BLOB + "automations/build-in-public-log.md"
 
-# Ordered so the legend and every dot on the page always agree.
 STATUS_ORDER = ["canonical", "migrated", "active", "partial", "drafting", "new", "stub"]
 STATUS_COLOR = {
-    "canonical": "#facc15",  # gold - the load-bearing concept (RoT)
-    "migrated":  "#34d399",  # green - fully moved into this repo
-    "active":    "#2dd4bf",  # teal - live automation, maintained ongoing
-    "partial":   "#fbbf24",  # amber - some real content, not finished
-    "drafting":  "#60a5fa",  # blue - being written now
-    "new":       "#c084fc",  # purple - added today, not yet in Confluence
-    "stub":      "#94a3b8",  # gray - placeholder, links out to Confluence
+    "canonical": "#facc15", "migrated": "#34d399", "active": "#2dd4bf",
+    "partial": "#fbbf24", "drafting": "#60a5fa", "new": "#c084fc", "stub": "#94a3b8",
 }
-STATUS_LABEL = {
-    "canonical": "canonical", "migrated": "migrated", "active": "active",
-    "partial": "partial", "drafting": "drafting", "new": "new", "stub": "stub",
-}
+STATUS_LABEL = {s: s for s in STATUS_ORDER}
 
 def esc(s):
     return html.escape(str(s)) if s is not None else ""
@@ -55,8 +47,7 @@ group_order = ["Governance / Core", "FW-001 Strategy (expanded)", "FW-002 - FW-0
                "GTM-adjacent", "Proof / Release / Arch", "Templates & Automations"]
 
 def dot(status):
-    color = STATUS_COLOR.get(status, "#94a3b8")
-    return f'<span class="dot" style="background:{color};"></span>'
+    return f'<span class="dot" style="background:{STATUS_COLOR.get(status, "#94a3b8")};"></span>'
 
 def render_group(name):
     items = groups.get(name, [])
@@ -71,14 +62,35 @@ def render_group(name):
         rows += f'<div style="font-size:13px;margin:5px 0;display:flex;align-items:flex-start;gap:7px;">{dot(status)}<span>{label}{note}</span></div>\n'
     return rows
 
-conflicts = "".join(
-    f'<div style="font-size:12px;color:#fecaca;margin:3px 0;">{esc(c)}</div>\n'
-    for c in manifest.get("open_conflicts", [])
-)
-blocked = "".join(
-    f'<div style="font-size:12px;color:#fecaca;margin:3px 0;">{esc(b)}</div>\n'
-    for b in manifest.get("blocked", [])
-)
+conflicts = "".join(f'<div style="font-size:12px;color:#fecaca;margin:3px 0;">{esc(c)}</div>\n' for c in manifest.get("open_conflicts", []))
+blocked = "".join(f'<div style="font-size:12px;color:#fecaca;margin:3px 0;">{esc(b)}</div>\n' for b in manifest.get("blocked", []))
+
+# --- Parse the build-in-public log into dated entries ---
+log_path = ROOT / "automations" / "build-in-public-log.md"
+entries = []
+if log_path.exists():
+    text = log_path.read_text()
+    # Split on level-2 headings that look like "## YYYY-MM-DD — Title"
+    parts = re.split(r'(?m)^## (\d{4}-\d{2}-\d{2}) — (.+)$', text)
+    # parts alternates: [preamble, date, title, body, date, title, body, ...]
+    for i in range(1, len(parts), 3):
+        date, title, body = parts[i], parts[i + 1], parts[i + 2]
+        m = re.search(r'\*\*Milestone:\*\*\s*(.+?)(?:\n\n|\Z)', body, re.S)
+        milestone = m.group(1).strip().replace("\n", " ") if m else ""
+        entries.append((date, title.strip(), milestone))
+entries.sort(key=lambda e: e[0], reverse=True)
+
+def render_bip_entries(entries):
+    if not entries:
+        return '<div style="font-size:13px;color:#a5b4fc;">No entries yet.</div>'
+    rows = ""
+    for date, title, milestone in entries[:8]:
+        rows += f'''<div style="margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid #24304f;">
+  <div style="font-size:11px;color:#a5b4fc;text-transform:uppercase;letter-spacing:.08em;font-weight:700;">{esc(date)}</div>
+  <div style="font-size:14px;font-weight:700;margin:2px 0 4px;">{esc(title)}</div>
+  <div style="font-size:13px;color:#dbeafe;">{esc(milestone)}</div>
+</div>\n'''
+    return rows
 
 now = datetime.datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
 
@@ -113,6 +125,8 @@ html_out = f"""<!doctype html>
   .legend-chip {{ display:inline-flex; align-items:center; gap:6px; font-size:11px; color:#dbeafe; background:#121a33; border:1px solid #24304f; border-radius:999px; padding:4px 10px; }}
   .legend-chip .dot {{ margin-top:0; }}
   .conflicts {{ margin-top:20px; background:#2a1420; border:1px solid #f87171; border-radius:12px; padding:14px; }}
+  .bip {{ margin-top:24px; background:#121a33; border:1px solid #facc15; border-radius:14px; padding:16px; }}
+  .bip a.hdr {{ text-decoration:none; color:inherit; }}
   .panel a:hover {{ color:#93c5fd; border-bottom-color:#93c5fd !important; }}
   @media (max-width:800px) {{ .grid, .arch {{ grid-template-columns:1fr 1fr; }} }}
 </style></head>
@@ -137,6 +151,13 @@ html_out = f"""<!doctype html>
 {panels}
 </div>
 
+<div class="bip">
+  <a class="hdr" href="{LOG_URL}" target="_blank" rel="noopener">
+    <div style="font-size:12px;font-weight:700;color:#fde68a;margin-bottom:12px;">&#128225; BUILD IN PUBLIC LOG &rarr; full drafts (3 voices) on GitHub</div>
+  </a>
+  {render_bip_entries(entries)}
+</div>
+
 <div class="conflicts">
   <div style="font-size:12px;font-weight:700;color:#fca5a5;margin-bottom:8px;">OPEN CONFLICTS - unresolved</div>
   {conflicts}
@@ -146,11 +167,11 @@ html_out = f"""<!doctype html>
   {blocked}
 </div>
 
-<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml by automations/generate_status_site.py - last built {now}. Click any item to open it.</div>
+<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml and build-in-public-log.md by automations/generate_status_site.py - last built {now}. Click any item to open it.</div>
 </body></html>
 """
 
 out_path = ROOT / "docs" / "index.html"
 out_path.parent.mkdir(exist_ok=True)
 out_path.write_text(html_out)
-print(f"Wrote {out_path}")
+print(f"Wrote {out_path}, {len(entries)} build-in-public entries parsed")
