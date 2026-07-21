@@ -1,5 +1,5 @@
 system: OperOS Method (OBOS)
-version: 0.2.0
+version: 0.2.1
 release_date: 2026-07-20
 principle: "Source once. Publish everywhere. No asset productized without an RoT-terms result metric."
 canonical_source: "This repository (GitHub). Confluence is interim canonical source for any object not yet migrated (status: stub)."
