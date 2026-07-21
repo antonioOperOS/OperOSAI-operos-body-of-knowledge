@@ -7,10 +7,22 @@ manifest = yaml.safe_load((ROOT / "MANIFEST.yaml").read_text())
 
 REPO_BLOB = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/"
 REPO_TREE = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/tree/main/"
+DRIVE_URL = "https://drive.google.com/drive/folders/0AG6QZiEVwppOUk9PVA"
 
+# Ordered so the legend and every dot on the page always agree.
+STATUS_ORDER = ["canonical", "migrated", "active", "partial", "drafting", "new", "stub"]
 STATUS_COLOR = {
-    "migrated": "#34d399", "partial": "#fbbf24", "drafting": "#60a5fa",
-    "new": "#c084fc", "stub": "#94a3b8", "active": "#34d399", "canonical": "#34d399",
+    "canonical": "#facc15",  # gold - the load-bearing concept (RoT)
+    "migrated":  "#34d399",  # green - fully moved into this repo
+    "active":    "#2dd4bf",  # teal - live automation, maintained ongoing
+    "partial":   "#fbbf24",  # amber - some real content, not finished
+    "drafting":  "#60a5fa",  # blue - being written now
+    "new":       "#c084fc",  # purple - added today, not yet in Confluence
+    "stub":      "#94a3b8",  # gray - placeholder, links out to Confluence
+}
+STATUS_LABEL = {
+    "canonical": "canonical", "migrated": "migrated", "active": "active",
+    "partial": "partial", "drafting": "drafting", "new": "new", "stub": "stub",
 }
 
 def esc(s):
@@ -20,9 +32,7 @@ def obj_url(o):
     path = o.get("path")
     if not path:
         return None
-    if path.endswith("/"):
-        return REPO_TREE + path
-    return REPO_BLOB + path
+    return (REPO_TREE if path.endswith("/") else REPO_BLOB) + path
 
 def group_key(obj_id: str) -> str:
     if obj_id.startswith("SYS") or obj_id == "CONCEPT-RoT":
@@ -44,17 +54,21 @@ for obj in manifest.get("objects", []):
 group_order = ["Governance / Core", "FW-001 Strategy (expanded)", "FW-002 - FW-008",
                "GTM-adjacent", "Proof / Release / Arch", "Templates & Automations"]
 
+def dot(status):
+    color = STATUS_COLOR.get(status, "#94a3b8")
+    return f'<span class="dot" style="background:{color};"></span>'
+
 def render_group(name):
     items = groups.get(name, [])
     rows = ""
     for o in items:
-        color = STATUS_COLOR.get(o.get("status", "stub"), "#94a3b8")
+        status = o.get("status", "stub")
         note = f' <span style="color:#a5b4fc;">({esc(o["note"])})</span>' if o.get("note") else ""
         label = f'{esc(o["id"])} {esc(o["title"])}'
         url = obj_url(o)
         if url:
             label = f'<a href="{esc(url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">{label}</a>'
-        rows += f'<div style="font-size:13px;margin:4px 0;"><span style="color:{color};">&#9679;</span> {label}{note}</div>\n'
+        rows += f'<div style="font-size:13px;margin:5px 0;display:flex;align-items:flex-start;gap:7px;">{dot(status)}<span>{label}{note}</span></div>\n'
     return rows
 
 conflicts = "".join(
@@ -73,6 +87,11 @@ panels = "".join(
     for g in group_order
 )
 
+legend = "".join(
+    f'<span class="legend-chip"><span class="dot" style="background:{STATUS_COLOR[s]};"></span>{STATUS_LABEL[s]}</span>'
+    for s in STATUS_ORDER
+)
+
 REPO_ROOT = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge"
 CONFLUENCE_URL = "https://operos.atlassian.net/wiki/spaces/TLAC"
 JIRA_URL = f"https://operos.atlassian.net/browse/{manifest.get('jira_epic')}"
@@ -84,12 +103,15 @@ html_out = f"""<!doctype html>
   :root {{ color-scheme: dark; }}
   body {{ margin:0; font-family: Inter, Arial, sans-serif; background:#0b1020; color:#eef2ff; line-height:1.5; padding:28px; }}
   a {{ color: inherit; }}
+  .dot {{ display:inline-block; width:9px; height:9px; border-radius:50%; flex:0 0 auto; margin-top:4px; }}
   .grid {{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }}
-  .arch {{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:24px; }}
+  .arch {{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:20px; }}
   .box {{ background:#121a33; border:1px solid #24304f; border-radius:12px; padding:10px; text-align:center; display:block; text-decoration:none; transition:border-color .15s; }}
   .box:hover {{ border-color:#60a5fa; }}
   .panel {{ background:#121a33; border:1px solid #24304f; border-radius:14px; padding:14px; }}
-  .legend span {{ margin-right:14px; font-size:11px; color:#a5b4fc; }}
+  .legend {{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }}
+  .legend-chip {{ display:inline-flex; align-items:center; gap:6px; font-size:11px; color:#dbeafe; background:#121a33; border:1px solid #24304f; border-radius:999px; padding:4px 10px; }}
+  .legend-chip .dot {{ margin-top:0; }}
   .conflicts {{ margin-top:20px; background:#2a1420; border:1px solid #f87171; border-radius:12px; padding:14px; }}
   .panel a:hover {{ color:#93c5fd; border-bottom-color:#93c5fd !important; }}
   @media (max-width:800px) {{ .grid, .arch {{ grid-template-columns:1fr 1fr; }} }}
@@ -105,14 +127,11 @@ html_out = f"""<!doctype html>
   <a class="box" href="{REPO_ROOT}" target="_blank" rel="noopener" style="border-color:#34d399;"><div style="font-size:12px;font-weight:700;">GitHub</div><div style="font-size:10px;color:#a5b4fc;">canonical - live</div></a>
   <a class="box" href="{CONFLUENCE_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Confluence</div><div style="font-size:10px;color:#a5b4fc;">portal - interim</div></a>
   <a class="box" href="{JIRA_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Jira</div><div style="font-size:10px;color:#a5b4fc;">{esc(manifest.get('jira_epic'))}</div></a>
-  <div class="box" style="border-color:#f87171;"><div style="font-size:12px;font-weight:700;">Databricks</div><div style="font-size:10px;color:#a5b4fc;">brain - blocked</div></div>
-  <div class="box"><div style="font-size:12px;font-weight:700;">Drive</div><div style="font-size:10px;color:#a5b4fc;">assets</div></div>
+  <div class="box" style="border-color:#f87171;cursor:default;"><div style="font-size:12px;font-weight:700;">Databricks</div><div style="font-size:10px;color:#a5b4fc;">brain - blocked</div></div>
+  <a class="box" href="{DRIVE_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Drive</div><div style="font-size:10px;color:#a5b4fc;">assets</div></a>
 </div>
 
-<div class="legend">
-  <span>&#9679; migrated</span><span>&#9679; partial</span><span>&#9679; drafting</span><span>&#9679; new</span><span>&#9679; stub</span>
-</div>
-<br>
+<div class="legend">{legend}</div>
 
 <div class="grid">
 {panels}
@@ -127,7 +146,7 @@ html_out = f"""<!doctype html>
   {blocked}
 </div>
 
-<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml by automations/generate_status_site.py - last built {now}. Click any item to open it on GitHub.</div>
+<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml by automations/generate_status_site.py - last built {now}. Click any item to open it.</div>
 </body></html>
 """
 
