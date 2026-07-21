@@ -63,3 +63,18 @@ Each entry: date, milestone, and three variants (Antonio's voice, Rafael's voice
 > We rebuilt how we run CFRs - Conversations, Feedback, Recognition - so recognition is tied to a specific key result, not general effort. Sounds small. It isn't: praising "a great quarter" without naming which KR moved is how a scorecard quietly stops mattering to the people it's supposed to motivate. We hold ourselves to the same operating cadence we document for clients, including the parts that are easy to skip. File: `02-frameworks/FW-003-okrs-metrics-operating-cadence.md`.
 
 *(All three: human-reviewed before posting; none auto-published.)*
+
+## 2026-07-21 — The playbook and the business, built in parallel
+
+**Milestone:** Reframed the repo's own positioning: this isn't a manual written after the fact — it's the AI Native Playbook, written in public while the company it describes is still being built. Antonio owns the execution plan/content layer here; Rafael and the team are building the GTM Engine's actual agents (Radar, Espelho, Cadência) and Databricks instrumentation at the same time, in a separate workstream, on purpose — neither waits on the other.
+
+**Antonio's voice (draft):**
+> Most playbooks get written after a company figures itself out. We're writing ours while we're still figuring it out - a framework goes into this repo the same week someone on my team ships the actual agent that framework describes. No polish, no hindsight. Just the real sequence.
+
+**Rafael's voice (draft):**
+> Two teams, two repos, zero coordination overhead by design: one of us writes the operating method, the other instruments it in HubSpot and Databricks. We only sync at the gates. That's not an accident - it's the same "don't let two systems duplicate one job" discipline we run in the GTM engine itself.
+
+**OperOS company voice (draft):**
+> We tell clients to measure outcomes, not activity. So we're doing the same to ourselves in public: the methodology and the machinery, built at the same time, by different people, neither one waiting for the other to be ready.
+
+*(All three: human-reviewed before posting; none auto-published.)*

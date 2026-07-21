@@ -2,6 +2,10 @@
 
 **RoT — Return on Tokens.** Revenue generated per token spent, proven against a holdout. That's the one metric every asset in this repository must ultimately serve. See `core-concepts/RoT-return-on-tokens.md`.
 
+## The AI Native Playbook
+
+This repo is being written in public, in parallel with the actual business it describes. Antonio is writing the execution plan, the methodology, and the big-picture narrative here — in the open, as it happens. Rafael and the team are building the real infrastructure behind it at the same time (the GTM Engine's agents, HubSpot instrumentation, the Databricks catalog). Neither waits for the other to finish. The result, once both sides catch up to each other, is the AI Native Playbook: not a retrospective case study, but a document written live while the company it describes was still being built.
+
 ## What this is
 
 This repository is the canonical source of the OperOS Business Operating System (OBOS) — a complete, teachable, self-improving methodology for building, running, and scaling an AI-native company. It synthesizes (not copies) the strongest thinking on founder discipline, strategy, product, sales, operations, leadership, execution, adaptation, finance, and AI transformation into one internally-consistent system, plus OperOS's own six proprietary pillars: Knowledge, Governance, Reasoning, Execution, Measurement, Optimization.
