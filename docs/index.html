@@ -4,23 +4,28 @@
 <style>
   :root { color-scheme: dark; }
   body { margin:0; font-family: Inter, Arial, sans-serif; background:#0b1020; color:#eef2ff; line-height:1.5; padding:28px; }
+  a { color: inherit; }
   .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
   .arch { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:24px; }
-  .box { background:#121a33; border:1px solid #24304f; border-radius:12px; padding:10px; text-align:center; }
+  .box { background:#121a33; border:1px solid #24304f; border-radius:12px; padding:10px; text-align:center; display:block; text-decoration:none; transition:border-color .15s; }
+  .box:hover { border-color:#60a5fa; }
   .panel { background:#121a33; border:1px solid #24304f; border-radius:14px; padding:14px; }
   .legend span { margin-right:14px; font-size:11px; color:#a5b4fc; }
   .conflicts { margin-top:20px; background:#2a1420; border:1px solid #f87171; border-radius:12px; padding:14px; }
+  .panel a:hover { color:#93c5fd; border-bottom-color:#93c5fd !important; }
   @media (max-width:800px) { .grid, .arch { grid-template-columns:1fr 1fr; } }
 </style></head>
 <body>
-<div style="color:#a5b4fc;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700;">antonioOperOS/OperOSAI-operos-body-of-knowledge - v0.2.0</div>
+<div style="color:#a5b4fc;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700;">
+  <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">antonioOperOS/OperOSAI-operos-body-of-knowledge</a> - v0.2.0
+</div>
 <div style="font-size:26px;font-weight:700;margin-top:4px;">OperOS Method (OBOS)</div>
 <div style="color:#dbeafe;font-size:14px;margin:4px 0 20px;max-width:640px;">Source once. Publish everywhere. No asset productized without an RoT-terms result metric.</div>
 
 <div class="arch">
-  <div class="box" style="border-color:#34d399;"><div style="font-size:12px;font-weight:700;">GitHub</div><div style="font-size:10px;color:#a5b4fc;">canonical - live</div></div>
-  <div class="box"><div style="font-size:12px;font-weight:700;">Confluence</div><div style="font-size:10px;color:#a5b4fc;">portal - interim</div></div>
-  <div class="box"><div style="font-size:12px;font-weight:700;">Jira</div><div style="font-size:10px;color:#a5b4fc;">OBOS-1</div></div>
+  <a class="box" href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge" target="_blank" rel="noopener" style="border-color:#34d399;"><div style="font-size:12px;font-weight:700;">GitHub</div><div style="font-size:10px;color:#a5b4fc;">canonical - live</div></a>
+  <a class="box" href="https://operos.atlassian.net/wiki/spaces/TLAC" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Confluence</div><div style="font-size:10px;color:#a5b4fc;">portal - interim</div></a>
+  <a class="box" href="https://operos.atlassian.net/browse/OBOS-1" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Jira</div><div style="font-size:10px;color:#a5b4fc;">OBOS-1</div></a>
   <div class="box" style="border-color:#f87171;"><div style="font-size:12px;font-weight:700;">Databricks</div><div style="font-size:10px;color:#a5b4fc;">brain - blocked</div></div>
   <div class="box"><div style="font-size:12px;font-weight:700;">Drive</div><div style="font-size:10px;color:#a5b4fc;">assets</div></div>
 </div>
@@ -31,37 +36,37 @@
 <br>
 
 <div class="grid">
-<div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">GOVERNANCE / CORE</div><div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> SYS-000 Operating Architecture &amp; Master Manifest</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> SYS-001 Manifesto &amp; Category Narrative</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> SYS-002 Knowledge Foundation &amp; Ontology</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> CONCEPT-RoT RoT - Return on Tokens</div>
-</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">FW-001 STRATEGY (EXPANDED)</div><div style="font-size:13px;margin:4px 0;"><span style="color:#fbbf24;">&#9679;</span> FW-001 Strategy &amp; Competitive Advantage</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> FW-001.1 Strategy Cascade</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> FW-001.2 Competitive Advantage Stack</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> FW-001.3 Strategic Inflection Radar</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#c084fc;">&#9679;</span> FW-001.4 MECE Issue Trees (McKinsey)</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#c084fc;">&#9679;</span> FW-001.5 Growth-Share &amp; Experience Curve (BCG)</div>
-</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">FW-002 - FW-008</div><div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> FW-002 Leadership &amp; High Output Management</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> FW-003 OKRs, Metrics &amp; Operating Cadence</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> FW-004 Operations &amp; Accountability</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> FW-005 Revenue, Offers &amp; Selling</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> FW-006 Product &amp; Customer Success</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> FW-007 Finance &amp; Value Creation</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> FW-008 AI Enterprise Architecture</div>
-</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">GTM-ADJACENT</div><div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> ASMT-001 Assessments &amp; Diagnostics</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> PLAY-001 Implementation Playbooks</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#fbbf24;">&#9679;</span> SALES-001 Sales Enablement</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> GTM-001 Thought Leadership Engine <span style="color:#a5b4fc;">(distribution owned by Rafael&#x27;s GTM Engine)</span></div>
-</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">PROOF / RELEASE / ARCH</div><div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> CERT-001 Certification &amp; Partner Enablement</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> PROOF-001 Case Studies &amp; Proof <span style="color:#a5b4fc;">(365 Retail Markets status disputed between HubSpot and Rafael&#x27;s draft - do not publish as proof yet)</span></div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> REL-001 Release Notes &amp; Release Candidate Packaging</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#60a5fa;">&#9679;</span> ARCH-001 OperOS Content &amp; Enterprise Brain Architecture</div>
-</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">TEMPLATES &amp; AUTOMATIONS</div><div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> TPL-001 Framework Template</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> TPL-002 Executive One-Pager Template</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> TPL-000 Frontmatter Schema</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> AUT-001 Content Generation Prompts</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> AUT-002 Publishing Pipeline</div>
-<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> AUT-003 Build-in-Public Log</div>
+<div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">GOVERNANCE / CORE</div><div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/00-governance/operating-architecture.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">SYS-000 Operating Architecture &amp; Master Manifest</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/01-source-system/SYS-001-manifesto-category-narrative.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">SYS-001 Manifesto &amp; Category Narrative</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/01-source-system/SYS-002-knowledge-foundation-ontology.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">SYS-002 Knowledge Foundation &amp; Ontology</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/core-concepts/RoT-return-on-tokens.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">CONCEPT-RoT RoT - Return on Tokens</a></div>
+</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">FW-001 STRATEGY (EXPANDED)</div><div style="font-size:13px;margin:4px 0;"><span style="color:#fbbf24;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/tree/main/02-frameworks/FW-001-strategy-competitive-advantage/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-001 Strategy &amp; Competitive Advantage</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-001-strategy-competitive-advantage/strategy-cascade.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-001.1 Strategy Cascade</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-001-strategy-competitive-advantage/competitive-advantage-stack.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-001.2 Competitive Advantage Stack</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-001-strategy-competitive-advantage/strategic-inflection-radar.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-001.3 Strategic Inflection Radar</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#c084fc;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-001-strategy-competitive-advantage/mckinsey-mece-issue-trees.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-001.4 MECE Issue Trees (McKinsey)</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#c084fc;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-001-strategy-competitive-advantage/bcg-growth-share-experience-curve.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-001.5 Growth-Share &amp; Experience Curve (BCG)</a></div>
+</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">FW-002 - FW-008</div><div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-002-leadership-high-output-management.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-002 Leadership &amp; High Output Management</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-003-okrs-metrics-operating-cadence.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-003 OKRs, Metrics &amp; Operating Cadence</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-004-operations-accountability.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-004 Operations &amp; Accountability</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-005-revenue-offers-selling.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-005 Revenue, Offers &amp; Selling</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-006-product-customer-success.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-006 Product &amp; Customer Success</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-007-finance-value-creation.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-007 Finance &amp; Value Creation</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/02-frameworks/FW-008-ai-enterprise-architecture.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">FW-008 AI Enterprise Architecture</a></div>
+</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">GTM-ADJACENT</div><div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/03-assessments/ASMT-001-assessments-diagnostics.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">ASMT-001 Assessments &amp; Diagnostics</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/04-playbooks/PLAY-001-implementation-playbooks.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">PLAY-001 Implementation Playbooks</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#fbbf24;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/05-sales-enablement/SALES-001-sales-enablement.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">SALES-001 Sales Enablement</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/06-thought-leadership/GTM-001-thought-leadership-engine.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">GTM-001 Thought Leadership Engine</a> <span style="color:#a5b4fc;">(distribution owned by Rafael&#x27;s GTM Engine)</span></div>
+</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">PROOF / RELEASE / ARCH</div><div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/07-certifications/CERT-001-certification-partner-enablement.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">CERT-001 Certification &amp; Partner Enablement</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/08-case-studies/PROOF-001-case-studies-proof.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">PROOF-001 Case Studies &amp; Proof</a> <span style="color:#a5b4fc;">(365 Retail Markets status disputed between HubSpot and Rafael&#x27;s draft - do not publish as proof yet)</span></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#94a3b8;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/09-releases/REL-001-release-notes.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">REL-001 Release Notes &amp; Release Candidate Packaging</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#60a5fa;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/10-architecture/ARCH-001-content-enterprise-brain-architecture.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">ARCH-001 OperOS Content &amp; Enterprise Brain Architecture</a></div>
+</div><div class="panel"><div style="font-size:12px;font-weight:700;color:#a5b4fc;margin-bottom:8px;">TEMPLATES &amp; AUTOMATIONS</div><div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/templates/framework_template.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">TPL-001 Framework Template</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/templates/executive_one_pager_template.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">TPL-002 Executive One-Pager Template</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/templates/frontmatter_schema.yaml" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">TPL-000 Frontmatter Schema</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/automations/content_generation_prompts.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">AUT-001 Content Generation Prompts</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/automations/publishing_pipeline.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">AUT-002 Publishing Pipeline</a></div>
+<div style="font-size:13px;margin:4px 0;"><span style="color:#34d399;">&#9679;</span> <a href="https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/automations/build-in-public-log.md" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">AUT-003 Build-in-Public Log</a></div>
 </div>
 </div>
 
@@ -79,5 +84,5 @@
 
 </div>
 
-<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml by automations/generate_status_site.py - last built 2026-07-20 23:21 UTC</div>
+<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml by automations/generate_status_site.py - last built 2026-07-21 14:02 UTC. Click any item to open it on GitHub.</div>
 </body></html>

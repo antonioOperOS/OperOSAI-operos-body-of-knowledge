@@ -5,6 +5,9 @@ import yaml, html, pathlib, datetime
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 manifest = yaml.safe_load((ROOT / "MANIFEST.yaml").read_text())
 
+REPO_BLOB = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/blob/main/"
+REPO_TREE = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge/tree/main/"
+
 STATUS_COLOR = {
     "migrated": "#34d399", "partial": "#fbbf24", "drafting": "#60a5fa",
     "new": "#c084fc", "stub": "#94a3b8", "active": "#34d399", "canonical": "#34d399",
@@ -12,6 +15,14 @@ STATUS_COLOR = {
 
 def esc(s):
     return html.escape(str(s)) if s is not None else ""
+
+def obj_url(o):
+    path = o.get("path")
+    if not path:
+        return None
+    if path.endswith("/"):
+        return REPO_TREE + path
+    return REPO_BLOB + path
 
 def group_key(obj_id: str) -> str:
     if obj_id.startswith("SYS") or obj_id == "CONCEPT-RoT":
@@ -39,7 +50,11 @@ def render_group(name):
     for o in items:
         color = STATUS_COLOR.get(o.get("status", "stub"), "#94a3b8")
         note = f' <span style="color:#a5b4fc;">({esc(o["note"])})</span>' if o.get("note") else ""
-        rows += f'<div style="font-size:13px;margin:4px 0;"><span style="color:{color};">&#9679;</span> {esc(o["id"])} {esc(o["title"])}{note}</div>\n'
+        label = f'{esc(o["id"])} {esc(o["title"])}'
+        url = obj_url(o)
+        if url:
+            label = f'<a href="{esc(url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px dotted #475569;">{label}</a>'
+        rows += f'<div style="font-size:13px;margin:4px 0;"><span style="color:{color};">&#9679;</span> {label}{note}</div>\n'
     return rows
 
 conflicts = "".join(
@@ -58,29 +73,38 @@ panels = "".join(
     for g in group_order
 )
 
+REPO_ROOT = "https://github.com/antonioOperOS/OperOSAI-operos-body-of-knowledge"
+CONFLUENCE_URL = "https://operos.atlassian.net/wiki/spaces/TLAC"
+JIRA_URL = f"https://operos.atlassian.net/browse/{manifest.get('jira_epic')}"
+
 html_out = f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><title>OperOS Method (OBOS) - Status</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   :root {{ color-scheme: dark; }}
   body {{ margin:0; font-family: Inter, Arial, sans-serif; background:#0b1020; color:#eef2ff; line-height:1.5; padding:28px; }}
+  a {{ color: inherit; }}
   .grid {{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }}
   .arch {{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:24px; }}
-  .box {{ background:#121a33; border:1px solid #24304f; border-radius:12px; padding:10px; text-align:center; }}
+  .box {{ background:#121a33; border:1px solid #24304f; border-radius:12px; padding:10px; text-align:center; display:block; text-decoration:none; transition:border-color .15s; }}
+  .box:hover {{ border-color:#60a5fa; }}
   .panel {{ background:#121a33; border:1px solid #24304f; border-radius:14px; padding:14px; }}
   .legend span {{ margin-right:14px; font-size:11px; color:#a5b4fc; }}
   .conflicts {{ margin-top:20px; background:#2a1420; border:1px solid #f87171; border-radius:12px; padding:14px; }}
+  .panel a:hover {{ color:#93c5fd; border-bottom-color:#93c5fd !important; }}
   @media (max-width:800px) {{ .grid, .arch {{ grid-template-columns:1fr 1fr; }} }}
 </style></head>
 <body>
-<div style="color:#a5b4fc;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700;">antonioOperOS/OperOSAI-operos-body-of-knowledge - v{esc(manifest.get('version'))}</div>
+<div style="color:#a5b4fc;text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:700;">
+  <a href="{REPO_ROOT}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">antonioOperOS/OperOSAI-operos-body-of-knowledge</a> - v{esc(manifest.get('version'))}
+</div>
 <div style="font-size:26px;font-weight:700;margin-top:4px;">OperOS Method (OBOS)</div>
 <div style="color:#dbeafe;font-size:14px;margin:4px 0 20px;max-width:640px;">{esc(manifest.get('principle'))}</div>
 
 <div class="arch">
-  <div class="box" style="border-color:#34d399;"><div style="font-size:12px;font-weight:700;">GitHub</div><div style="font-size:10px;color:#a5b4fc;">canonical - live</div></div>
-  <div class="box"><div style="font-size:12px;font-weight:700;">Confluence</div><div style="font-size:10px;color:#a5b4fc;">portal - interim</div></div>
-  <div class="box"><div style="font-size:12px;font-weight:700;">Jira</div><div style="font-size:10px;color:#a5b4fc;">{esc(manifest.get('jira_epic'))}</div></div>
+  <a class="box" href="{REPO_ROOT}" target="_blank" rel="noopener" style="border-color:#34d399;"><div style="font-size:12px;font-weight:700;">GitHub</div><div style="font-size:10px;color:#a5b4fc;">canonical - live</div></a>
+  <a class="box" href="{CONFLUENCE_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Confluence</div><div style="font-size:10px;color:#a5b4fc;">portal - interim</div></a>
+  <a class="box" href="{JIRA_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Jira</div><div style="font-size:10px;color:#a5b4fc;">{esc(manifest.get('jira_epic'))}</div></a>
   <div class="box" style="border-color:#f87171;"><div style="font-size:12px;font-weight:700;">Databricks</div><div style="font-size:10px;color:#a5b4fc;">brain - blocked</div></div>
   <div class="box"><div style="font-size:12px;font-weight:700;">Drive</div><div style="font-size:10px;color:#a5b4fc;">assets</div></div>
 </div>
@@ -103,7 +127,7 @@ html_out = f"""<!doctype html>
   {blocked}
 </div>
 
-<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml by automations/generate_status_site.py - last built {now}</div>
+<div style="margin-top:20px;font-size:11px;color:#64748b;">Auto-generated from MANIFEST.yaml by automations/generate_status_site.py - last built {now}. Click any item to open it on GitHub.</div>
 </body></html>
 """
 
