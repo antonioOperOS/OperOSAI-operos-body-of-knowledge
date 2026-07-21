@@ -125,10 +125,10 @@ html_out = f"""<!doctype html>
 
 <div class="arch">
   <a class="box" href="{REPO_ROOT}" target="_blank" rel="noopener" style="border-color:#34d399;"><div style="font-size:12px;font-weight:700;">GitHub</div><div style="font-size:10px;color:#a5b4fc;">canonical - live</div></a>
-  <a class="box" href="{CONFLUENCE_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Confluence</div><div style="font-size:10px;color:#a5b4fc;">portal - interim</div></a>
-  <a class="box" href="{JIRA_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Jira</div><div style="font-size:10px;color:#a5b4fc;">{esc(manifest.get('jira_epic'))}</div></a>
+  <a class="box" href="{CONFLUENCE_URL}" target="_blank" rel="noopener" style="border-color:#a78bfa;"><div style="font-size:12px;font-weight:700;">Confluence</div><div style="font-size:10px;color:#a5b4fc;">portal - interim</div></a>
+  <a class="box" href="{JIRA_URL}" target="_blank" rel="noopener" style="border-color:#f97316;"><div style="font-size:12px;font-weight:700;">Jira</div><div style="font-size:10px;color:#a5b4fc;">{esc(manifest.get('jira_epic'))}</div></a>
   <div class="box" style="border-color:#f87171;cursor:default;"><div style="font-size:12px;font-weight:700;">Databricks</div><div style="font-size:10px;color:#a5b4fc;">brain - blocked</div></div>
-  <a class="box" href="{DRIVE_URL}" target="_blank" rel="noopener"><div style="font-size:12px;font-weight:700;">Drive</div><div style="font-size:10px;color:#a5b4fc;">assets</div></a>
+  <a class="box" href="{DRIVE_URL}" target="_blank" rel="noopener" style="border-color:#38bdf8;"><div style="font-size:12px;font-weight:700;">Drive</div><div style="font-size:10px;color:#a5b4fc;">assets</div></a>
 </div>
 
 <div class="legend">{legend}</div>
