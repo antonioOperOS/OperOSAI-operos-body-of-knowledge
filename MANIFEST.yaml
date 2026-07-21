@@ -38,6 +38,7 @@ objects:
   - {id: AUT-001, title: Content Generation Prompts, path: automations/content_generation_prompts.md, status: migrated}
   - {id: AUT-002, title: Publishing Pipeline, path: automations/publishing_pipeline.md, status: migrated}
   - {id: AUT-003, title: Build-in-Public Log, path: automations/build-in-public-log.md, status: active}
+  - {id: AUT-004, title: Build-in-Public Content Standard, path: automations/build-in-public-standard.md, status: active}
 
 open_conflicts:
   - "ICP revenue band: brief says $30-500M, Confluence ICP page says $100M-$1B."
