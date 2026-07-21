@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.2 — 2026-07-21
+- Migrated FW-002 (Leadership & High Output Management) from `stub` to `partial`: Confluence page 49348629 supplied the purpose statement and five named core models (Manager Leverage System, Task-Relevant Maturity Map, One-on-One Operating System, Decision Rights Matrix, Leadership Feedback Loop) but no worked mechanics, so the mechanics were synthesized from the framework's named source influences (Grove, Horowitz, Willink) into the standard 9-section structure, with an explicit RoT-terms result metric per the Operating Rule.
+- Logged three build-in-public drafts (Antonio/Rafael/OperOS voice) on the Decision Rights Matrix vs. Task-Relevant Maturity tension, per AUT-004.
+
 ## v0.2.0 — 2026-07-20
 - Repository bootstrapped from empty (`antonioOperOS/OperOSAI-operos-body-of-knowledge`).
 - Migrated OperOS Method Source System v0.1 content: master ontology, FW-001.1 Strategy Cascade, FW-001.2 Competitive Advantage Stack, FW-001.3 Strategic Inflection Radar, templates, automation prompts, publishing pipeline.
