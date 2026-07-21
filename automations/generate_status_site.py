@@ -77,18 +77,24 @@ if log_path.exists():
         date, title, body = parts[i], parts[i + 1], parts[i + 2]
         m = re.search(r'\*\*Milestone:\*\*\s*(.+?)(?:\n\n|\Z)', body, re.S)
         milestone = m.group(1).strip().replace("\n", " ") if m else ""
-        entries.append((date, title.strip(), milestone))
+        heading_text = f"{date} \u2014 {title.strip()}"
+        slug = heading_text.lower()
+        slug = re.sub(r"[^\w\- ]", "", slug)
+        slug = slug.replace(" ", "-")
+        entries.append((date, title.strip(), milestone, slug))
 entries.sort(key=lambda e: e[0], reverse=True)
 
 def render_bip_entries(entries):
     if not entries:
         return '<div style="font-size:13px;color:#a5b4fc;">No entries yet.</div>'
     rows = ""
-    for date, title, milestone in entries[:8]:
+    for date, title, milestone, slug in entries[:8]:
+        post_url = f"{LOG_URL}#{slug}"
         rows += f'''<div style="margin:0 0 14px;padding-bottom:14px;border-bottom:1px solid #24304f;">
   <div style="font-size:11px;color:#a5b4fc;text-transform:uppercase;letter-spacing:.08em;font-weight:700;">{esc(date)}</div>
   <div style="font-size:14px;font-weight:700;margin:2px 0 4px;">{esc(title)}</div>
-  <div style="font-size:13px;color:#dbeafe;">{esc(milestone)}</div>
+  <div style="font-size:13px;color:#dbeafe;margin-bottom:6px;">{esc(milestone)}</div>
+  <a href="{esc(post_url)}" target="_blank" rel="noopener" style="font-size:12px;color:#facc15;text-decoration:none;border-bottom:1px dotted #facc15;">Read full post &amp; copy-ready drafts &rarr;</a>
 </div>\n'''
     return rows
 
