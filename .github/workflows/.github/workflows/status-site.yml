@@ -1,0 +1,30 @@
+name: Rebuild status site
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'MANIFEST.yaml'
+      - 'automations/generate_status_site.py'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install pyyaml
+      - run: python automations/generate_status_site.py
+      - name: Commit regenerated site
+        run: |
+          git config user.name "obos-bot"
+          git config user.email "actions@github.com"
+          git add docs/index.html
+          git diff --cached --quiet || git commit -m "chore: auto-regenerate status site from MANIFEST.yaml [skip ci]"
+          git push
