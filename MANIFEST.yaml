@@ -1,5 +1,5 @@
 system: OperOS Method (OBOS)
-version: 0.2.2
+version: 0.2.3
 release_date: 2026-07-21
 principle: "Source once. Publish everywhere. No asset productized without an RoT-terms result metric."
 canonical_source: "This repository (GitHub). Confluence is interim canonical source for any object not yet migrated (status: stub)."
@@ -17,7 +17,7 @@ objects:
   - {id: FW-001.4, title: "MECE Issue Trees (McKinsey)", path: 02-frameworks/FW-001-strategy-competitive-advantage/mckinsey-mece-issue-trees.md, status: new}
   - {id: FW-001.5, title: "Growth-Share & Experience Curve (BCG)", path: 02-frameworks/FW-001-strategy-competitive-advantage/bcg-growth-share-experience-curve.md, status: new}
   - {id: FW-002, title: Leadership & High Output Management, path: 02-frameworks/FW-002-leadership-high-output-management.md, status: partial, jira: OBOS-5}
-  - {id: FW-003, title: "OKRs, Metrics & Operating Cadence", path: 02-frameworks/FW-003-okrs-metrics-operating-cadence.md, status: stub, jira: OBOS-6}
+  - {id: FW-003, title: "OKRs, Metrics & Operating Cadence", path: 02-frameworks/FW-003-okrs-metrics-operating-cadence.md, status: partial, jira: OBOS-6, note: "Confluence source names 6 core models but does not elaborate mechanism; migrated from skeleton + Doerr's Measure What Matters (committed vs aspirational OKRs, CFRs, 0.0-1.0 scoring, sandbagging). Sub-model depth (FW-003.1-3.6) still pending."}
   - {id: FW-004, title: Operations & Accountability, path: 02-frameworks/FW-004-operations-accountability.md, status: stub, jira: OBOS-7}
   - {id: FW-005, title: "Revenue, Offers & Selling", path: 02-frameworks/FW-005-revenue-offers-selling.md, status: stub, jira: OBOS-8}
   - {id: FW-006, title: Product & Customer Success, path: 02-frameworks/FW-006-product-customer-success.md, status: stub, jira: OBOS-9}

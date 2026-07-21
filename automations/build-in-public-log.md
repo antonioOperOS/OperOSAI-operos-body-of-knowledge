@@ -45,3 +45,21 @@ Each entry: date, milestone, and three variants (Antonio's voice, Rafael's voice
 > Most "leadership frameworks" fail on one thing: they apply the same delegation style to every person and every task. The fix isn't a better meeting cadence, it's naming who decides what before the meeting happens, then matching delegation to actual skill per task, not seniority. We wrote our own Decision Rights Matrix before selling anyone else's. `FW-002` is live in the repo, marked `partial` on purpose — the parts we haven't proven yet aren't dressed up as done.
 
 *(All three: human-reviewed before posting; none auto-published.)*
+
+
+---
+
+## 2026-07-21 — FW-003 OKRs, Metrics & Operating Cadence (partial)
+
+**Milestone:** Migrated OKRs, Metrics & Operating Cadence from stub to partial content — Doerr's Measure What Matters synthesized into a Strategy-to-OKR Cascade -> Leading/Lagging Indicator Map -> Weekly/Monthly Review -> Quarterly Reset -> Executive Scorecard cadence, with an explicit RoT result metric for any KR tied to an AI workflow.
+
+**Antonio's voice (draft):**
+> Writing the Leading and Lagging Indicator Map today, I realized we've had a KR all quarter with no leading indicator attached to it - we literally can't know if we're on track until the number lands at quarter-end. That's not an operating cadence, that's a bet with a delayed payout. Fixing it means naming, for every KR we run, the weekly signal that predicts it before the lagging result shows up. File's `02-frameworks/FW-003-okrs-metrics-operating-cadence.md` if you want the model.
+
+**Rafael's voice (draft):**
+> Doerr's scoring convention: 0.7 on a real stretch KR is good. If every KR on your scorecard reads 1.0, you didn't hit your goals - you set goals you knew you'd hit. We wrote that rule directly into FW-003, and it's the same discipline as RoT: a number that always looks clean isn't proof, it's a sign nobody's testing against a real bar. Any KR tied to an AI workflow doesn't count as attained until it clears revenue-per-token against a holdout. Full stop.
+
+**OperOS company voice (draft):**
+> We rebuilt how we run CFRs - Conversations, Feedback, Recognition - so recognition is tied to a specific key result, not general effort. Sounds small. It isn't: praising "a great quarter" without naming which KR moved is how a scorecard quietly stops mattering to the people it's supposed to motivate. We hold ourselves to the same operating cadence we document for clients, including the parts that are easy to skip. File: `02-frameworks/FW-003-okrs-metrics-operating-cadence.md`.
+
+*(All three: human-reviewed before posting; none auto-published.)*

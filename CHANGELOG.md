@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.3 — 2026-07-21
+- Migrated FW-003 (OKRs, Metrics & Operating Cadence) from `stub` to `partial`: Confluence page 49381377 supplied the purpose statement and six named core models (Strategy-to-OKR Cascade, Leading and Lagging Indicator Map, Weekly Business Review, Monthly Operating Review, Quarterly Reset, Executive Scorecard) plus a 5-step implementation path, but no worked mechanics, so the mechanics were synthesized from Doerr's Measure What Matters (committed vs. aspirational OKRs, CFRs, 0.0-1.0 scoring, sandbagging) into the standard 9-section structure, with an explicit RoT-terms result metric per the Operating Rule.
+- Logged three build-in-public drafts (Antonio/Rafael/OperOS voice) on the OKR-scoring/sandbagging tension, per AUT-004.
+
 ## v0.2.2 — 2026-07-21
 - Migrated FW-002 (Leadership & High Output Management) from `stub` to `partial`: Confluence page 49348629 supplied the purpose statement and five named core models (Manager Leverage System, Task-Relevant Maturity Map, One-on-One Operating System, Decision Rights Matrix, Leadership Feedback Loop) but no worked mechanics, so the mechanics were synthesized from the framework's named source influences (Grove, Horowitz, Willink) into the standard 9-section structure, with an explicit RoT-terms result metric per the Operating Rule.
 - Logged three build-in-public drafts (Antonio/Rafael/OperOS voice) on the Decision Rights Matrix vs. Task-Relevant Maturity tension, per AUT-004.
