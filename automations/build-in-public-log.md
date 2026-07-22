@@ -78,3 +78,20 @@ Each entry: date, milestone, and three variants (Antonio's voice, Rafael's voice
 > We tell clients to measure outcomes, not activity. So we're doing the same to ourselves in public: the methodology and the machinery, built at the same time, by different people, neither one waiting for the other to be ready.
 
 *(All three: human-reviewed before posting; none auto-published.)*
+
+---
+
+## 2026-07-22 — FW-004 Operations & Accountability (partial)
+
+**Milestone:** Migrated Operations & Accountability from stub to partial content — Cardone Ventures' seat-based accountability, Goldratt's Theory of Constraints (The Goal), and Toyota Way standardized work/kaizen synthesized into an Accountability Map → Process-to-SOP → Constraint Resolution Loop → Continuous Improvement Flywheel → Weekly Operations Review cascade, with an explicit RoT result metric for any AI-assisted operations workflow.
+
+**Antonio's voice (draft):**
+> Spent today mapping our own constraint using Goldratt's five steps, and the answer wasn't the seat I expected. I'd been pushing improvements into lead qualification for a month. Meanwhile the real bottleneck was proposal turnaround, which nobody had touched because it wasn't visibly broken. All that qualification work just built a bigger queue in front of proposal writing. Zero net gain. Freezing every other process change this week until proposal turnaround clears. File's `02-frameworks/FW-004-operations-accountability.md` if you want the model.
+
+**Rafael's voice (draft):**
+> Local efficiency has a specific failure mode: you can raise output at every non-constraint station in a process and total throughput doesn't move, because the constraint caps it regardless of what happens upstream. We wrote the sequence into FW-004 as four steps, not one: identify the constraint, exploit it, subordinate everything else to that decision, then elevate only if exploitation isn't enough. Skip subordinate and the fix gets quietly undone by whatever process is still optimizing its own local metric. Same discipline as RoT: a number that looks good in isolation proves nothing until you check what it's actually bound by.
+
+**OperOS company voice (draft):**
+> We tell clients not to automate a process until they know whether it's the constraint. Today we applied that rule to ourselves and found most of our own improvement effort going into a station that wasn't binding our output at all. `FW-004` is in the repo now: seat-based accountability plus a constraint-resolution loop built specifically to catch this mistake before it wastes a quarter. Marked partial on purpose — the mechanism is real, the validation cycle against our own operations isn't finished yet.
+
+*(All three: human-reviewed before posting; none auto-published.)*

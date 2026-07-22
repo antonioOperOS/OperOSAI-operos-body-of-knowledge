@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.2.4 — 2026-07-22
+- Migrated FW-004 (Operations & Accountability) from `stub` to `partial`: Confluence page 49414145 supplied the purpose statement and five named core models (Accountability Map, Process-to-SOP System, Constraint Resolution Loop, Continuous Improvement Flywheel, Weekly Operations Review) plus a 5-step implementation path, but no worked mechanics, so the mechanics were synthesized from Cardone Ventures' seat-based accountability discipline, Goldratt's Theory of Constraints (The Goal), and Toyota Way standardized work/kaizen into the standard 9-section structure, with an explicit RoT-terms result metric per the Operating Rule.
+- Logged three build-in-public drafts (Antonio/Rafael/OperOS voice) on the constraint-vs-local-efficiency tension, per AUT-004.
+
 ## v0.2.3 — 2026-07-21
 - Migrated FW-003 (OKRs, Metrics & Operating Cadence) from `stub` to `partial`: Confluence page 49381377 supplied the purpose statement and six named core models (Strategy-to-OKR Cascade, Leading and Lagging Indicator Map, Weekly Business Review, Monthly Operating Review, Quarterly Reset, Executive Scorecard) plus a 5-step implementation path, but no worked mechanics, so the mechanics were synthesized from Doerr's Measure What Matters (committed vs. aspirational OKRs, CFRs, 0.0-1.0 scoring, sandbagging) into the standard 9-section structure, with an explicit RoT-terms result metric per the Operating Rule.
 - Logged three build-in-public drafts (Antonio/Rafael/OperOS voice) on the OKR-scoring/sandbagging tension, per AUT-004.
