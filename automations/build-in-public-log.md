@@ -95,3 +95,21 @@ Each entry: date, milestone, and three variants (Antonio's voice, Rafael's voice
 > We tell clients not to automate a process until they know whether it's the constraint. Today we applied that rule to ourselves and found most of our own improvement effort going into a station that wasn't binding our output at all. `FW-004` is in the repo now: seat-based accountability plus a constraint-resolution loop built specifically to catch this mistake before it wastes a quarter. Marked partial on purpose — the mechanism is real, the validation cycle against our own operations isn't finished yet.
 
 *(All three: human-reviewed before posting; none auto-published.)*
+
+---
+
+## 2026-07-23 — FW-005 Revenue, Offers & Selling (migrated)
+
+**Milestone:** Migrated Revenue, Offers & Selling from stub to migrated status — the Confluence source was already substantially developed, so its Grand Outcome Offer Architecture, Enterprise Discovery System, Buying Committee Map, and Expansion Pathway were normalized directly into the repo's standard 9-section structure, with an explicit RoT result metric added for any AI-assisted step in the sales motion (a metric the source page didn't define).
+
+**Antonio's voice (draft):**
+> Mapped our own Buying Committee today and caught something uncomfortable: on one of our live deals, we'd built the whole business case around our champion's excitement and never actually named who owns the budget. Champion energy isn't economic-buyer approval — they're different roles that need different proof. Went back and asked directly: who signs this. Rewriting our qualification checklist before it costs us a quarter.
+
+**Rafael's voice (draft):**
+> We instrumented "time to first measurable value" as the clock that actually predicts expansion — not time-to-close. A deal that closes fast but takes four months to show a number is worse than one that closes slower and proves value in three weeks. Every implementation package in FW-005 now carries an explicit time-to-value target, not just a price. Same RoT discipline underneath: outcome measured against a holdout, not activity measured against a calendar.
+
+**OperOS company voice (draft):**
+> Enterprise deals don't stall on price — they stall on an unnamed role. Today we mapped the six seats inside every buying committee we sell into: economic buyer, technical buyer, user buyer, risk/legal, champion, and the blocker nobody says out loud. Same rule we hand clients for their own deals, applied to ours first: name every seat before the proposal goes out, or the deal dies in a review no one scheduled for. `FW-005` is in the repo now — no longer a stub.
+
+*(All three: human-reviewed before posting; none auto-published.)*
+
